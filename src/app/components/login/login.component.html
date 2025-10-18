@@ -1,0 +1,29 @@
+<section>
+    <form class="py-5 w-75 shadow mx-auto my-4 p-4 bg-main-light"  (ngSubmit)="handleForm()" [formGroup]="loginForm">
+        <h2 class="py-2">Login Now</h2>
+        <div class="my-3">
+            <label for="email">Email :</label>
+            <input #emailInput type="email" placeholder="Enter Your Email..." id="email" class="form-control py-2 my-1" formControlName="email">
+            <div class="alert alert-danger p-1 font-md" *ngIf="loginForm.get('email')?.errors &&( loginForm.get('email')?.touched || emailInput.value.length > 0)">
+                <p class="mb-0 p-1" *ngIf="loginForm.get('email')?.getError('required')">Email is Required</p>
+                <p class="mb-0 p-1" *ngIf="loginForm.get('email')?.getError('email')">Email invalid</p>
+            </div>
+        </div>
+        <div class="my-3">
+            <label for="password">Password :</label>
+            <input #passwordInput type="password" placeholder="Enter Your Password..." id="password" class="form-control py-2 my-1" formControlName="password">
+            <div class="alert alert-danger" *ngIf="loginForm.get('password')?.errors && (loginForm.get('password')?.touched || passwordInput.value.length < 0)">
+                <p *ngIf="loginForm.get('password')?.getError('required')">Password is Required</p>
+                <p *ngIf="loginForm.get('password')?.getError('pattern')">Password is invalid</p>
+            </div>
+        </div>
+        <div class="d-flex justify-content-between align-items-center">
+            <button [disabled]="loginForm.invalid" class="main-btn ">
+                Login Now
+                <span *ngIf="isLoading"><i class="fas fa-spin fa-spinner"></i></span>
+            </button>
+            <a routerLink="/forgetpassword" class="link-primary">Forget Password</a>
+        </div>
+       
+    </form>
+</section>

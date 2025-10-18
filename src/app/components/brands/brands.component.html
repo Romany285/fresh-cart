@@ -1,0 +1,18 @@
+<section class="container my-3 text-center" *ngIf="brandsData" >
+    <div >ooo</div>
+    <h1 class="fw-medium mb-3">All Brands</h1>
+   <div class="row g-3">
+    <div *ngFor="let brand of brandsData" class="col-md-3">
+        <div (click)="getDetails(brand._id)" class="product">
+            <img class="w-100" [src]="brand.image" [alt]="brand.name">
+            <h6 class="text-center text-main"> {{brand.name}} </h6>
+        </div>
+    </div>
+   </div>
+</section>
+<div class="details" *ngIf="showDetails" (click)="showDetails = false">
+    <div class="item bg-white p-3 rounded shadow">
+        <img class="w-100" [src]="details.image" [alt]="">
+        <h4 class="main-text text-center fs-3 my-2 text-main"> {{details.name}} </h4>
+    </div>
+</div>

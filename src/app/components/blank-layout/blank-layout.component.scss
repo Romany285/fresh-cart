@@ -1,0 +1,21 @@
+:host{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+.main-section{
+    padding-top: 68px;
+    background-image: url('../../../assets/images/home-background-img.svg');
+}
+.btn-up{
+    background-color:#0aad0a ;
+    color: #fff;
+    position: fixed;
+    bottom: 20px;
+    right: 15px;
+    z-index: 999;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    border: unset;
+}

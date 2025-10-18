@@ -1,0 +1,94 @@
+ 
+@import 'ngx-owl-carousel-o/lib/styles/scss/owl.carousel';
+@import 'ngx-owl-carousel-o/lib/styles/scss/owl.theme.default';
+@import url('https://fonts.googleapis.com/css2?family=Encode+Sans+Expanded:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import 'ngx-toastr/toastr';
+$main-color:#0aad0a;
+$light-color:#f0f3f2;
+$shadow:rgba(145, 158, 171, 0.2) 0px 2px 4px -1px,
+rgba(145, 158, 171, 0.14) 0px 4px 5px 0px,
+rgba(145, 158, 171, 0.12) 0px 1px 10px 0px;
+$rating-color:#ffc908;
+$main-transtion:0.8s;
+$font-family: "Encode Sans Expanded", sans-serif;
+::-webkit-scrollbar{
+    width: 15px;
+
+}
+::-webkit-scrollbar-track{
+    background-color: $light-color;
+}
+::-webkit-scrollbar-thumb{
+    background-color: #0aad0ad3;
+    border-radius: 5px;
+}
+body{
+    font-family:$font-family;
+}
+.text-main{
+    color: $main-color;
+}
+.bg-main{
+    background-color: $main-color;
+}
+.bg-main-light{
+    background-color: $light-color;
+}
+.rading-color{
+    color: $rating-color;
+}
+.font-sm{
+    font-size: 11px;
+}
+.main-btn{
+    background-color: $main-color;
+    color: #fff;
+    border-radius: 5px;
+    border: unset;
+    cursor: pointer;
+    padding: 4px 8px;
+    &:disabled{
+        background-color: #0aad0a6c;
+        color: #fff;
+        cursor: not-allowed;
+    }
+}
+.product{
+    border: 1px solid #0aad0a;
+    box-shadow: $shadow;
+    padding: 8px;
+    border-radius: 5px;
+    position: relative;
+    overflow: hidden;
+    &:hover{
+        .heart{
+            right: 6px;
+        }
+    }
+    .heart{
+        font-size: 30px;
+        position: absolute;
+        top: 10px;
+        right: -50px;
+        z-index: 999;
+        cursor: pointer;
+        transition: all 0.7s;
+    }
+}
+.product:hover {
+    box-shadow: 0 0 10px #00000068;
+  }
+.active-link {
+    background-color:#0aad0a !important;
+    color: #f0f3f2 !important;
+    border-radius: 5px;
+}
+.cursor{
+    cursor: pointer;
+}
+.font-md{
+    font-size: 14px;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
