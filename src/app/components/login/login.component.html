@@ -17,13 +17,13 @@
                 <p *ngIf="loginForm.get('password')?.getError('pattern')">Password is invalid</p>
             </div>
         </div>
-        <div class="d-flex justify-content-between align-items-center">
-            <button [disabled]="loginForm.invalid" class="main-btn ">
+        <div class="d-flex  flex-column flex-md-row justify-content-between align-items-center">
+            <button [disabled]="loginForm.invalid" class="main-btn mt-2">
                 Login Now
                 <span *ngIf="isLoading"><i class="fas fa-spin fa-spinner"></i></span>
             </button>
-            <a routerLink="/forgetpassword" class="link-primary">Forget Password</a>
+            <a routerLink="/forgetpassword" class="link-primary mt-2">Forget Password</a>
         </div>
-       
+
     </form>
 </section>
