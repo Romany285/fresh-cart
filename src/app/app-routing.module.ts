@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { authGuard } from './core/guard/auth.guard';
 
-const routes: Routes = [ 
+const routes: Routes = [
   {path:'',loadComponent:()=>import('./components/blank-layout/blank-layout.component').then((m)=>m.BlankLayoutComponent),
   children:[
     {path:'',redirectTo:'home',pathMatch:'full'},
@@ -17,7 +17,7 @@ const routes: Routes = [
     {path:'allorders',loadComponent:()=>import('./components/allorders/allorders.component').then((m)=>m.AllordersComponent)},
     {path:'forget',loadComponent:()=>import('./components/forgetpassword/forgetpassword.component').then((m)=>m.ForgetpasswordComponent),title:'Forget Password'},
     {path:'categorydetails/:id',loadComponent:()=>import('./components/categorydetails/categorydetails.component').then((m)=>m.CategorydetailsComponent),title:'Category Details'}
-     
+
   ],
   canActivate:[authGuard]
 },
@@ -33,7 +33,7 @@ children:[
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+ imports: [RouterModule.forRoot(routes, { useHash: true })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
