@@ -1,15 +1,144 @@
-.product{
-    &:hover {
-        .main-btn{
-            transform:translateY(0%);
-            opacity: 1;
-        }
-    }
-    .main-btn{
-        transform:translateY(200%);
-        opacity: 0;
-        transition: all 0.6s;
-    }
-     
-} 
  
+.wishlist-section {
+  overflow: hidden;
+}
+
+
+/* Product Hover */
+.product {
+
+  &:hover {
+
+    .main-btn {
+      transform: translateY(0%);
+      opacity: 1;
+    }
+
+  }
+
+  .main-btn {
+    transform: translateY(200%);
+    opacity: 0;
+    transition: all 0.6s;
+  }
+
+}
+
+
+/* Product Image */
+.product-image {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+
+
+/* Product Title */
+.product-title {
+  min-height: 36px;
+  margin-top: 8px;
+  margin-bottom: 5px;
+}
+
+
+/* Product Category */
+.product-category {
+  min-height: 20px;
+}
+
+
+/* Product Info */
+.product-info {
+  gap: 5px;
+}
+
+.rating {
+  white-space: nowrap;
+}
+
+
+/* =========================
+   Mobile
+========================= */
+
+@media (max-width: 767.98px) {
+
+  /*
+    No real hover on mobile,
+    so show the heart permanently.
+  */
+  .product {
+
+    .heart {
+      right: 6px;
+      top: 8px;
+      font-size: 25px;
+    }
+
+    /*
+      Show Add To Cart permanently
+      on mobile.
+    */
+    .main-btn {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+  }
+
+
+  .product-title {
+    font-size: 14px !important;
+  }
+
+  .product-category {
+    font-size: 13px !important;
+  }
+
+  .product-info {
+    font-size: 13px;
+  }
+
+}
+
+
+/* =========================
+   Small Mobile
+========================= */
+
+@media (max-width: 575.98px) {
+
+  .wishlist-section {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+  }
+
+  .product {
+    padding: 6px !important;
+
+    .heart {
+      right: 5px;
+      top: 6px;
+      font-size: 22px;
+    }
+  }
+
+  .product-title {
+    font-size: 13px !important;
+  }
+
+  .product-category {
+    font-size: 12px !important;
+  }
+
+  .product-info {
+    font-size: 12px;
+  }
+
+  .main-btn {
+    font-size: 13px;
+    padding: 6px 4px !important;
+  }
+
+}
+

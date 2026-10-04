@@ -1,27 +1,271 @@
 
-.product{
-    &:hover {
-        .main-btn{
-            transform:translateY(0%);
-            opacity: 1;
-        }
-    }
-    .main-btn{
-        transform:translateY(200%);
-        opacity: 0;
-        transition: all 0.6s;
-    }
+/* =========================
+   Main Slider
+========================= */
 
+.main-slider-section {
+  width: 100%;
 }
-.star{
-    font-size: 12px;
+
+.main-slider-img {
+  height: 300px;
+  object-fit: cover;
 }
-.desktop-only {
+
+
+/* =========================
+   Categories
+========================= */
+
+.categories-section {
+  overflow: hidden;
+}
+
+.categories-header {
+  gap: 15px;
+}
+
+.see-all {
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.category-item {
+  padding: 0 8px;
+}
+
+.category-image {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
   display: block;
 }
 
-@media (max-width: 1024px) {
-  .desktop-only {
-    display: none;
+.category-name {
+  font-size: 16px;
+  margin-bottom: 0;
+}
+
+
+/* =========================
+   Products
+========================= */
+
+.products-section {
+  overflow: hidden;
+}
+
+.search-input {
+  width: 75%;
+}
+
+.product {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  &:hover {
+    .main-btn {
+      transform: translateY(0%);
+      opacity: 1;
+    }
   }
+
+  .main-btn {
+    transform: translateY(200%);
+    opacity: 0;
+    transition: all 0.6s;
+  }
+}
+
+.product-header {
+  cursor: pointer;
+}
+
+.product-image {
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+
+.product-title {
+  min-height: 36px;
+  margin-top: 8px;
+  margin-bottom: 5px;
+}
+
+.product-category {
+  min-height: 20px;
+}
+
+.product-info {
+  gap: 5px;
+}
+
+.rating {
+  white-space: nowrap;
+}
+
+.star {
+  font-size: 12px;
+}
+
+
+/* =========================
+   Tablet
+========================= */
+
+@media (max-width: 991.98px) {
+
+  .main-slider-img {
+    height: 400px;
+  }
+
+  .category-image {
+    height: 220px;
+  }
+
+  .search-input {
+    width: 90%;
+  }
+
+}
+
+
+/* =========================
+   Mobile
+========================= */
+
+@media (max-width: 767.98px) {
+
+  .main-slider-section {
+    padding-top: 10px;
+  }
+
+  .main-slider-img {
+    height: 400px;
+    border-radius: 15px !important;
+  }
+
+  .categories-section,
+  .products-section {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+  }
+
+  .categories-header h2 {
+    font-size: 22px;
+  }
+
+  .categories-header .see-all {
+    font-size: 16px;
+  }
+
+  .category-image {
+    height: 190px;
+  }
+
+  .category-name {
+    font-size: 14px;
+  }
+
+  .search-input {
+    width: 100%;
+  }
+
+  /*
+    Mobile doesn't have real hover,
+    so keep the heart visible.
+  */
+  .product {
+
+    .heart {
+      right: 6px;
+      top: 8px;
+      font-size: 25px;
+    }
+
+    /*
+      Add To Cart should also be visible
+      because hover doesn't work reliably
+      on mobile.
+    */
+    .main-btn {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  .product-title {
+    font-size: 14px !important;
+    min-height: 34px;
+  }
+
+  .product-category {
+    font-size: 13px !important;
+  }
+
+  .product-info {
+    font-size: 13px;
+  }
+
+}
+
+
+/* =========================
+   Small Mobile
+========================= */
+
+@media (max-width: 575.98px) {
+
+  .main-slider-img {
+    height: 180px;
+  }
+
+  .categories-header h2 {
+    font-size: 20px;
+  }
+
+  .categories-header .see-all {
+    font-size: 14px;
+  }
+
+  .category-image {
+    height: 160px;
+  }
+
+  .category-name {
+    font-size: 13px;
+  }
+
+  .product {
+    padding: 6px !important;
+  }
+
+  .product .heart {
+    right: 5px;
+    top: 6px;
+    font-size: 22px;
+  }
+
+  .product-title {
+    font-size: 13px !important;
+  }
+
+  .product-category {
+    font-size: 12px !important;
+  }
+
+  .product-info {
+    font-size: 12px;
+  }
+
+  .main-btn {
+    font-size: 13px;
+    padding: 6px 4px !important;
+  }
+
+}
+
+::ng-deep .owl-carousel .owl-item {
+  padding: 0 8px;
 }

@@ -1,53 +1,240 @@
-<section>
-    <form class="p-4 my-4 shadow w-75 mx-auto bg-main-light" (ngSubmit)="handleForm()" [formGroup]="registerForm">
-            <h2 class="py-2">Register Now</h2>
-            <div class="my-3">
-                <label for="name">Name :</label>
-                <input #nameInput type="text" placeholder="Enter Your Name..." id="name" class="form-control py-2 my-1" formControlName="name">
-                <div class="alert alert-danger p-1 font-md" *ngIf="registerForm.get('name')?.errors &&( registerForm.get('name')?.touched || nameInput.value.length > 0)">
-                    <p class="mb-0 p-1" *ngIf="registerForm.get('name')?.getError('required')">Name is Required</p>
-                    <p class="mb-0 p-1" *ngIf="registerForm.get('name')?.getError('minlength')">Name Min Length 3</p>
-                    <p class="mb-0 p-1" *ngIf="registerForm.get('name')?.getError('maxlength')">Name max Length 3</p>
-                </div>
-            </div>
-            <div class="my-3">
-                <label for="email">Email :</label>
-                <input #emailInput type="email" placeholder="Enter Your Email..." id="email" class="form-control py-2 my-1" formControlName="email">
-                <div class="alert alert-danger p-1 font-md" *ngIf="registerForm.get('email')?.errors &&( registerForm.get('email')?.touched || emailInput.value.length > 0)">
-                    <p class="mb-0 p-1" *ngIf="registerForm.get('email')?.getError('required')">Email is Required</p>
-                    <p class="mb-0 p-1" *ngIf="registerForm.get('email')?.getError('email')">Email invalid</p>
-                </div>
-            </div>
-            <div class="my-3">
-                <label for="password">Password :</label>
-                <input #passwordInput type="password" placeholder="Enter Your Password..." id="password" class="form-control py-2 my-1" formControlName="password">
-                <div class="alert alert-danger p-1 font-md" *ngIf="registerForm.get('password')?.errors &&( registerForm.get('password')?.touched || passwordInput.value.length > 0)">
-                    <p class="mb-0 p-1" *ngIf="registerForm.get('password')?.getError('required')">Password is Required</p>
-                    <p class="mb-0 p-1" *ngIf="registerForm.get('password')?.getError('pattern')">must be at least 6 chars</p>
-                     
-                </div>
-            </div>
-            <div class="my-3">
-                <label for="rePassword">Re-Password :</label>
-                <input #rePasswordInput type="password" placeholder="Try password..." id="rePassword" class="form-control py-2 my-1" formControlName="rePassword">
-                <div class="alert alert-danger p-1 font-md" *ngIf="registerForm.get('rePassword')?.errors &&( registerForm.get('rePassword')?.touched || rePasswordInput.value.length > 0)">
-                    <p class="mb-0 p-1" *ngIf="registerForm.get('rePassword')?.getError('required')">rePassword is Required</p>
-                    <p class="mb-0 p-1" *ngIf="registerForm.get('rePassword')?.getError('mismatch')">Password confirmation is incorrect</p>
-                </div>
-            </div>
-            <div class="my-3">
-                <label for="phone">Phone :</label>
-                <input #phoneInput type="tel" placeholder="Enter Your Phone..." id="phone" class="form-control py-2 my-1" formControlName="phone">
-                <div class="alert alert-danger p-1 font-md" *ngIf="registerForm.get('phone')?.errors &&( registerForm.get('phone')?.touched || phoneInput.value.length > 0)">
-                    <p class="mb-0 p-1" *ngIf="registerForm.get('phone')?.getError('required')">Phone is Required</p>
-                    <p class="mb-0 p-1" *ngIf="registerForm.get('phone')?.getError('pattern')">accept only egypt phone numbers</p>
-                </div>
-            </div>
-            <button  [disabled]="registerForm.invalid" class="main-btn ms-auto">
-                <span *ngIf="isLoading"><i class="fas fa-spin fa-spinner"></i></span>
-                Register Now
-            </button>
-            <p *ngIf="errMsg" class="alert alert-danger p-1 mb-0 mt-3"> {{errMsg}} </p>
-    </form>
-   
+
+<section class="register-section">
+  <form
+    class="register-form shadow mx-auto my-4 p-4 bg-main-light"
+    (ngSubmit)="handleForm()"
+    [formGroup]="registerForm"
+  >
+
+    <h2 class="py-2">Register Now</h2>
+
+    <!-- Name -->
+    <div class="my-3">
+      <label for="name">Name :</label>
+
+      <input
+        #nameInput
+        type="text"
+        placeholder="Enter Your Name..."
+        id="name"
+        class="form-control py-2 my-1"
+        formControlName="name"
+      />
+
+      <div
+        class="alert alert-danger p-1 font-md"
+        *ngIf="
+          registerForm.get('name')?.errors &&
+          (registerForm.get('name')?.touched || nameInput.value.length > 0)
+        "
+      >
+        <p
+          class="mb-0 p-1"
+          *ngIf="registerForm.get('name')?.getError('required')"
+        >
+          Name is Required
+        </p>
+
+        <p
+          class="mb-0 p-1"
+          *ngIf="registerForm.get('name')?.getError('minlength')"
+        >
+          Name Min Length 3
+        </p>
+
+        <p
+          class="mb-0 p-1"
+          *ngIf="registerForm.get('name')?.getError('maxlength')"
+        >
+          Name Max Length 20
+        </p>
+      </div>
+    </div>
+
+    <!-- Email -->
+    <div class="my-3">
+      <label for="email">Email :</label>
+
+      <input
+        #emailInput
+        type="email"
+        placeholder="Enter Your Email..."
+        id="email"
+        class="form-control py-2 my-1"
+        formControlName="email"
+      />
+
+      <div
+        class="alert alert-danger p-1 font-md"
+        *ngIf="
+          registerForm.get('email')?.errors &&
+          (registerForm.get('email')?.touched || emailInput.value.length > 0)
+        "
+      >
+        <p
+          class="mb-0 p-1"
+          *ngIf="registerForm.get('email')?.getError('required')"
+        >
+          Email is Required
+        </p>
+
+        <p
+          class="mb-0 p-1"
+          *ngIf="registerForm.get('email')?.getError('email')"
+        >
+          Email invalid
+        </p>
+      </div>
+    </div>
+
+    <!-- Password -->
+   <div class="my-3">
+  <label for="password">Password :</label>
+
+  <div class="password-input">
+    <input
+      #passwordInput
+      [type]="showPassword ? 'text' : 'password'"
+      placeholder="Enter Your Password..."
+      id="password"
+      class="form-control py-2 my-1"
+      formControlName="password"
+    />
+
+    <i
+      class="fas"
+      [class.fa-eye]="!showPassword"
+      [class.fa-eye-slash]="showPassword"
+      (click)="togglePassword()"
+    ></i>
+  </div>
+
+  <div
+    class="alert alert-danger p-1 font-md"
+    *ngIf="
+      registerForm.get('password')?.errors &&
+      (registerForm.get('password')?.touched ||
+        passwordInput.value.length > 0)
+    "
+  >
+    <p
+      class="mb-0 p-1"
+      *ngIf="registerForm.get('password')?.getError('required')"
+    >
+      Password is Required
+    </p>
+
+    <p
+      class="mb-0 p-1"
+      *ngIf="registerForm.get('password')?.getError('pattern')"
+    >
+      Must be at least 6 characters
+    </p>
+  </div>
+</div>
+
+    <!-- Re-Password -->
+  <div class="my-3">
+  <label for="rePassword">Re-Password :</label>
+
+  <div class="password-input">
+    <input
+      #rePasswordInput
+      [type]="showRePassword ? 'text' : 'password'"
+      placeholder="Try password..."
+      id="rePassword"
+      class="form-control py-2 my-1"
+      formControlName="rePassword"
+    />
+
+    <i
+      class="fas"
+      [class.fa-eye]="!showRePassword"
+      [class.fa-eye-slash]="showRePassword"
+      (click)="toggleRePassword()"
+    ></i>
+  </div>
+
+  <div
+    class="alert alert-danger p-1 font-md"
+    *ngIf="
+      registerForm.get('rePassword')?.errors &&
+      (registerForm.get('rePassword')?.touched ||
+        rePasswordInput.value.length > 0)
+    "
+  >
+    <p
+      class="mb-0 p-1"
+      *ngIf="registerForm.get('rePassword')?.getError('required')"
+    >
+      Re-Password is Required
+    </p>
+
+    <p
+      class="mb-0 p-1"
+      *ngIf="registerForm.get('rePassword')?.getError('mismatch')"
+    >
+      Password confirmation is incorrect
+    </p>
+  </div>
+</div>
+
+    <!-- Phone -->
+    <div class="my-3">
+      <label for="phone">Phone :</label>
+
+      <input
+        #phoneInput
+        type="tel"
+        placeholder="Enter Your Phone..."
+        id="phone"
+        class="form-control py-2 my-1"
+        formControlName="phone"
+      />
+
+      <div
+        class="alert alert-danger p-1 font-md"
+        *ngIf="
+          registerForm.get('phone')?.errors &&
+          (registerForm.get('phone')?.touched || phoneInput.value.length > 0)
+        "
+      >
+        <p
+          class="mb-0 p-1"
+          *ngIf="registerForm.get('phone')?.getError('required')"
+        >
+          Phone is Required
+        </p>
+
+        <p
+          class="mb-0 p-1"
+          *ngIf="registerForm.get('phone')?.getError('pattern')"
+        >
+          Accept only Egyptian phone numbers
+        </p>
+      </div>
+    </div>
+
+    <!-- Submit -->
+    <button
+      [disabled]="registerForm.invalid"
+      class="main-btn d-block ms-auto mt-3"
+    >
+      <span *ngIf="isLoading">
+        <i class="fas fa-spin fa-spinner"></i>
+      </span>
+
+      Register Now
+    </button>
+
+    <!-- API Error -->
+    <p
+      *ngIf="errMsg"
+      class="alert alert-danger p-1 mb-0 mt-3"
+    >
+      {{ errMsg }}
+    </p>
+
+  </form>
 </section>
+

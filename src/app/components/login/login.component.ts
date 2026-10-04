@@ -13,6 +13,9 @@ import { Router, RouterLink } from '@angular/router';
 })
 export class LoginComponent {
   isLoading:boolean = false
+  showPassword: boolean = false;
+
+
   constructor(private _FormBuilder:FormBuilder , private _AuthService:AuthService , private _Router:Router){}
   loginForm:FormGroup = this._FormBuilder.group({
     email:['',[Validators.required,Validators.email]],
@@ -24,13 +27,13 @@ export class LoginComponent {
     if(this.loginForm.valid){
        this._AuthService.setLogin(userData).subscribe({
         next:(responce)=>{
-         
+
           if(responce.message == 'success'){
             localStorage.setItem('etoken',responce.token);
             this._AuthService.decodeUser();
             this._Router.navigate(['/home']);
             this.isLoading = false;
-            
+
           }
           console.log(responce)
         },
@@ -41,4 +44,7 @@ export class LoginComponent {
        })
     }
   }
+  togglePassword(): void {
+  this.showPassword = !this.showPassword;
+}
 }
