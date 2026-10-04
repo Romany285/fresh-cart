@@ -15,6 +15,8 @@ import { Router } from '@angular/router';
 export class RegisterComponent {
   errMsg:string = '';
   isLoading:boolean = false
+  showPassword: boolean = false;
+showRePassword: boolean = false;
   constructor(private _FormBuilder:FormBuilder,private _AuthService:AuthService , private _Router:Router){}
   registerForm:FormGroup = this._FormBuilder.group({
     name:['',[Validators.required,Validators.minLength(3),Validators.maxLength(20)]],
@@ -35,30 +37,35 @@ export class RegisterComponent {
       rePassword?.setErrors({mismatch:true})
     }
   }
-   handleForm(){
-    const userData = this.registerForm.value
-    this.isLoading = true
-    if(this.registerForm.valid){
-      
-      this._AuthService.setRegister(userData).subscribe({
-        next:(responce)=>{
-          if(responce.message == 'success'){
-            this.isLoading = false
-            this._Router.navigate(['/login'])
-          }
-          
-          
-          console.log(responce)
-        },
-        error:(err)=>{
-          this.errMsg = err.error.message;
-          this.isLoading = false
-          
-          console.log(err)
-        }
-      })
-        console.log(this.registerForm.value)
-     }
+   handleForm() {
+  if (this.registerForm.invalid) {
+    this.registerForm.markAllAsTouched();
+    return;
+  }
+
+  const userData = this.registerForm.value;
+
+  this.isLoading = true;
+
+  this._AuthService.setRegister(userData).subscribe({
+    next: (response) => {
+      if (response.message === 'success') {
+        this.isLoading = false;
+        this._Router.navigate(['/login']);
+      }
+    },
+    error: (err) => {
+      this.errMsg = err.error.message;
+      this.isLoading = false;
+      console.log(err);
     }
-    
+  });
+}
+togglePassword(): void {
+  this.showPassword = !this.showPassword;
+}
+
+toggleRePassword(): void {
+  this.showRePassword = !this.showRePassword;
+}
 }

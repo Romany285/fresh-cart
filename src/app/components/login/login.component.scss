@@ -1,3 +1,78 @@
 ::placeholder{
     font-size: 12px;
 }
+
+.login-section {
+  padding: 20px 15px;
+}
+
+.login-form {
+  width: 75%;
+  max-width: 800px;
+  border-radius: 5px;
+}
+
+.font-md {
+  font-size: 14px;
+}
+
+.login-actions {
+  gap: 10px;
+}
+
+/* Tablet */
+@media (max-width: 991.98px) {
+  .login-form {
+    width: 90%;
+  }
+}
+
+/* Mobile */
+@media (max-width: 575.98px) {
+  .login-section {
+    padding: 10px;
+  }
+
+  .login-form {
+    width: 100%;
+    padding: 20px !important;
+  }
+
+  .login-form h2 {
+    font-size: 24px;
+  }
+
+  .login-actions {
+    align-items: stretch !important;
+  }
+
+  .login-actions .main-btn {
+    width: 100%;
+  }
+
+  .login-actions a {
+    align-self: center;
+  }
+}
+
+.password-input {
+  position: relative;
+
+  input {
+    padding-right: 45px !important;
+  }
+
+  i {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #6c757d;
+    z-index: 10;
+
+    &:hover {
+      color: #0aad0a;
+    }
+  }
+}
